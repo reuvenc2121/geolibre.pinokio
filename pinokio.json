@@ -1,0 +1,20 @@
+{
+  "title": "GeoLibre",
+  "description": "A free, open-source GIS for visualizing, exploring, and analyzing geospatial data locally in your browser.",
+  "icon": "icon.png",
+  "links": [
+    {
+      "title": "GeoLibre",
+      "links": [
+        {
+          "title": "GitHub",
+          "value": "https://github.com/opengeos/GeoLibre"
+        },
+        {
+          "title": "Documentation",
+          "value": "https://geolibre.app"
+        }
+      ]
+    }
+  ]
+}
