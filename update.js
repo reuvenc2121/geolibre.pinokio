@@ -10,7 +10,25 @@ module.exports = {
       method: "shell.run",
       params: {
         path: "app",
-        message: "git pull"
+        message: [
+          "git checkout -- apps/geolibre-desktop/src/i18n/languages.ts",
+          "git pull"
+        ]
+      }
+    },
+    {
+      method: "fs.copy",
+      params: {
+        src: "hebrew/he.json",
+        dest: "app/apps/geolibre-desktop/src/i18n/locales/he.json"
+      }
+    },
+    {
+      method: "shell.run",
+      params: {
+        message: [
+          "node hebrew/patch-languages.js"
+        ]
       }
     },
     {

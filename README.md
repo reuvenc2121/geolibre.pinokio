@@ -12,6 +12,16 @@ This launcher installs and runs the browser edition of [GeoLibre](https://github
 
 The launcher runs GeoLibre's cross-platform browser build on `127.0.0.1`. Features that require the native Tauri desktop application—such as desktop filesystem dialogs and some native local-file integrations—are outside this launcher. Some browser features lazily fetch third-party runtimes or map data and therefore need internet access on first use. The optional self-hosted JupyterLite Notebook bundle is not built by GeoLibre's default Node-only development flow, so that panel reports that it is unavailable unless its separate Python build dependencies are installed upstream.
 
+## Hebrew interface
+
+GeoLibre ships 19 interface languages but not Hebrew. This launcher adds a full Hebrew catalog on top of the upstream source:
+
+- `hebrew/he.json` is a Hebrew translation of GeoLibre's `en.json` (about 6,400 strings). **Install** and **Update** copy it into `app/apps/geolibre-desktop/src/i18n/locales/`, where GeoLibre auto-discovers it.
+- `hebrew/patch-languages.js` registers the language as **עברית** in the Settings language selector. It is idempotent and re-applied after every clone or pull, so upstream updates do not drop Hebrew.
+- The app already switches to a right-to-left layout for the `he` locale, so no layout changes are needed.
+
+To use it, open **Settings → Language** and choose **עברית**, or open the web UI with `?locale=he`. Strings that a future GeoLibre release adds and that are missing from `he.json` fall back to English until the catalog is updated.
+
 ## Programmatic access
 
 GeoLibre's browser build is primarily an interactive, client-side application; it does not expose a general-purpose REST API. Its supported URL interface can load a public `.geolibre.json` project and control the embedded layout with query parameters such as `url`, `layout`, `toolbar`, `panels`, `maponly`, and `theme`.

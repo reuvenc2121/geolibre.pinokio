@@ -9,6 +9,21 @@ module.exports = {
       }
     },
     {
+      method: "fs.copy",
+      params: {
+        src: "hebrew/he.json",
+        dest: "app/apps/geolibre-desktop/src/i18n/locales/he.json"
+      }
+    },
+    {
+      method: "shell.run",
+      params: {
+        message: [
+          "node hebrew/patch-languages.js"
+        ]
+      }
+    },
+    {
       method: "shell.run",
       params: {
         path: "app",
